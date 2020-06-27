@@ -8,6 +8,7 @@ process.stdin.on("data", function (input) {
 
 process.stdin.on("end", function () {
   main(stdinInput);
+  process.exit(0);
 });
 
 function out(outStrings: string[]) {

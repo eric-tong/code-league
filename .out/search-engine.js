@@ -15,6 +15,7 @@ process.stdin.on("data", function (input) {
 });
 process.stdin.on("end", function () {
     main(stdinInput);
+    process.exit(0);
 });
 function out(outStrings) {
     outStrings.forEach(function (str) { return process.stdout.write(str + "\n"); });
