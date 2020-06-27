@@ -1,5 +1,3 @@
-// Sample code to perform I/O:
-
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
 const stdinInput: string[] = [];
