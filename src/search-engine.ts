@@ -5,7 +5,7 @@ process.stdin.setEncoding("utf-8");
 const stdinInput: string[] = [];
 
 process.stdin.on("data", function (input) {
-  stdinInput.push(input.toString());
+  stdinInput.push(input.toString().toLowerCase());
 });
 
 process.stdin.on("end", function () {
@@ -24,8 +24,6 @@ export default function main(
   input: string[],
   caseNumber: number = 1
 ): string[] {
-  console.log(input);
-
   const T = parseInt(input[0]);
   const [N, Q] = input[1].split(" ").map(str => parseInt(str));
   const database = input.slice(2, 2 + N);
@@ -39,7 +37,6 @@ export default function main(
       toTree(words, root);
     } while (words.shift());
   }
-  console.log(root);
 
   const result: string[] = [];
   for (const query of queries) {
