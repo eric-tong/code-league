@@ -20,15 +20,24 @@ type Tree = {
   [label: string]: { tree: Tree; count: number };
 };
 
-export default function main(
-  input: string[],
-  caseNumber: number = 1
-): string[] {
-  const T = parseInt(input[0]);
-  const [N, Q] = input[1].split(" ").map(str => parseInt(str));
-  const database = input.slice(2, 2 + N);
-  const queries = input.slice(2 + N, 2 + N + Q);
+export default function main(input: string[]): string[] {
+  const T = parseInt(input.shift() as string);
+  const results: string[] = [];
 
+  for (let t = 1; t <= T; t++) {
+    const [N, Q] = (input.shift() as string)
+      .split(" ")
+      .map(str => parseInt(str));
+    const result = search(input.slice(0, N), input.slice(N, N + Q));
+    out([`Case ${t}:`, ...result]);
+    results.push(`Case ${t}:`, ...result);
+
+    input.splice(0, N + Q);
+  }
+  return results;
+}
+
+function search(database: string[], queries: string[]) {
   const root: Tree = {};
 
   for (const item of database) {
@@ -60,8 +69,7 @@ export default function main(
     result.push(count.toString());
   }
 
-  out([`Case ${caseNumber}:`, ...result]);
-  return [`Case ${caseNumber}:`, ...result];
+  return result;
 }
 
 function toTree(words: string[], root: Tree) {
