@@ -1,9 +1,9 @@
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
-const stdinInput: string[] = [];
+let stdinInput: string[];
 
 process.stdin.on("data", function (input) {
-  stdinInput.push(input.toString().toLowerCase());
+  stdinInput = input.toString().split("\n");
 });
 
 process.stdin.on("end", function () {
@@ -24,9 +24,8 @@ export default function main(input: string[]): string[] {
   const results: string[] = [];
 
   for (let t = 1; t <= T; t++) {
-    const [N, Q] = (input.shift() as string)
-      .split(" ")
-      .map(str => parseInt(str));
+    const NQ = input.shift() as string;
+    const [N, Q] = NQ.split(" ").map(str => parseInt(str));
     const result = search(input.slice(0, N), input.slice(N, N + Q));
     out([`Case ${t}:`, ...result]);
     results.push(`Case ${t}:`, ...result);

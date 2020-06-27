@@ -9,9 +9,9 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
-var stdinInput = [];
+var stdinInput;
 process.stdin.on("data", function (input) {
-    stdinInput.push(input.toString().toLowerCase());
+    stdinInput = input.toString().split("\n");
 });
 process.stdin.on("end", function () {
     main(stdinInput);
@@ -24,9 +24,8 @@ function main(input) {
     var T = parseInt(input.shift());
     var results = [];
     for (var t = 1; t <= T; t++) {
-        var _a = input.shift()
-            .split(" ")
-            .map(function (str) { return parseInt(str); }), N = _a[0], Q = _a[1];
+        var NQ = input.shift();
+        var _a = NQ.split(" ").map(function (str) { return parseInt(str); }), N = _a[0], Q = _a[1];
         var result = search(input.slice(0, N), input.slice(N, N + Q));
         out(__spreadArrays(["Case " + t + ":"], result));
         results.push.apply(results, __spreadArrays(["Case " + t + ":"], result));
