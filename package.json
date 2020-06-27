@@ -34,5 +34,8 @@
       ],
       "@babel/preset-typescript"
     ]
+  },
+  "dependencies": {
+    "jest": "^26.1.0"
   }
 }
