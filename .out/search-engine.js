@@ -9,9 +9,9 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
-var stdinInput;
+var stdinInput = [];
 process.stdin.on("data", function (input) {
-    stdinInput = input.toString().split("\n");
+    stdinInput.push.apply(stdinInput, input.toString().split("\n"));
 });
 process.stdin.on("end", function () {
     main(stdinInput);

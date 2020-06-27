@@ -1,9 +1,9 @@
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
-let stdinInput: string[];
+const stdinInput: string[] = [];
 
 process.stdin.on("data", function (input) {
-  stdinInput = input.toString().split("\n");
+  stdinInput.push(...input.toString().split("\n"));
 });
 
 process.stdin.on("end", function () {
